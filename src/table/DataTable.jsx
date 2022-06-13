@@ -17,13 +17,21 @@ export default function DataTable() {
     };
 
     // showDetails state for displaying student details with a boolean,the button onclick function displayData returns a true value and the properties
-    const showDetails = () =>{
+    const ShowDetails = (props) =>{
 
-    }
+        return (
+            <div>
+                <b>
+                {this.props.Id} - {this.props.birthdate} - {this.props.country} - {this.props.city} 
+                </b>
+            </div>
+        );
+
+    };
 
 
     // functionconponent that returns table header
-    const tableHeader = () =>{
+    const TableHeader = () =>{
         return (
             <div>
                 <h1>
@@ -35,33 +43,55 @@ export default function DataTable() {
     };
 
     // functionconponent 
-    const studentList =  [
-        {
-            Id: 1, FirstName:"Anna" , LastName:"Karlson", age:27, birthdate: "", country:"Sverige", city:"Bromölla"
-        }
-        ,{
-            Id:2, FirstName:"Anders" , LastName:"Olsson", age:21, birthdate: "", country:"Finland", city:"Helsingfors"
-        }
-        ,{
-            Id:3, FirstName:"Karin" , LastName:"", age:52, birthdate: "", country:"Sverige", city:"Malmö"
-        },
-        {
-            Id:4, FirstName:"Oskar" , LastName:"Nilsson", age:45, birthdate: "", country:"Sverige", city:"Växjö"
-        }
-        ,
-        {
-            Id:5, FirstName:"Ann" , LastName:"Svensson", age:35, birthdate: "", country:"Danmark", city:"Helsingör"
-        }
-    ];
+    const StudentList = (props) =>{ return(
+        [
+            {
+                Id: 1, FirstName:"Anna" , LastName:"Karlson", age:27, birthdate: "", country:"Sverige", city:"Bromölla"
+            }
+            ,{
+                Id:2, FirstName:"Anders" , LastName:"Olsson", age:21, birthdate: "", country:"Finland", city:"Helsingfors"
+            }
+            ,{
+                Id:3, FirstName:"Karin" , LastName:"", age:52, birthdate: "", country:"Sverige", city:"Malmö"
+            },
+            {
+                Id:4, FirstName:"Oskar" , LastName:"Nilsson", age:45, birthdate: "", country:"Sverige", city:"Växjö"
+            }
+            ,
+            {
+                Id:5, FirstName:"Ann" , LastName:"Svensson", age:35, birthdate: "", country:"Danmark", city:"Helsingör"
+            }    
+        ]
+        )
+    };
 
 
     // functionconponent action 
-    const tableAction = () =>{
+    const ButtonClicked = () =>{
 
-    };
+    
+
+    return(
+        <div>
+            <button onClick={ShowDetails}> showDetails</button>
+        </div>) 
+      };
 
     // functionconponent 
-    const tableRow = () =>{
+    const tableRow = this.props.studentList.map((studentList,index) =>{
 
-    };
-}
+        return (
+                <div>
+                
+                 
+                    <b key={index}>
+                        {this.prop.Id} - {this.prop.FirstName} - {this.props.LastName} - {this.props.age} 
+                    </b>
+                </div>
+            );
+        }
+    
+    );
+
+      
+};
