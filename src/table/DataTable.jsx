@@ -10,16 +10,17 @@ export default function DataTable() {
         return (
             <div>
                 <b>
-                    {person.FirstName} - {person.LastName} - {person.age} 
+                    {person.FirstName} - {person.LastName} - {person.age}  - {person.birthdate} - {person.country} - {person.city}
                 </b>
             </div>
         );
     };
-
+    
     // showDetails state for displaying student details with a boolean,the button onclick function displayData returns a true value and the properties
-    const ShowDetails = (props) =>{
+    const ShowDetails = () =>{
 
         return (
+            
             <div>
                 <b>
                 {this.props.Id} - {this.props.birthdate} - {this.props.country} - {this.props.city} 
@@ -32,6 +33,7 @@ export default function DataTable() {
 
     // functionconponent that returns table header
     const TableHeader = () =>{
+        
         return (
             <div>
                 <h1>
@@ -65,7 +67,7 @@ export default function DataTable() {
         )
     };
 
-
+    
     // functionconponent action 
     const ButtonClicked = () =>{
 
@@ -73,25 +75,34 @@ export default function DataTable() {
 
     return(
         <div>
-            <button onClick={ShowDetails}> showDetails</button>
+            <button onClick={ShowDetails}> Show Details</button>
         </div>) 
       };
 
     // functionconponent 
-    const tableRow = this.props.studentList.map((studentList,index) =>{
-
-        return (
-                <div>
-                
-                 
-                    <b key={index}>
-                        {this.prop.Id} - {this.prop.FirstName} - {this.props.LastName} - {this.props.age} 
-                    </b>
-                </div>
-            );
-        }
-    
-    );
-
-      
+    function tableRow (props) {
+       
+        
+        return(
+            <tbody>
+                {
+                    props.StudentList.map((props) =>{
+                console.log(props.id);
+                return (
+                    
+                <tr key={props.id}>
+                    <td>{props.id}</td>
+                    <td>{props.FirstName}</td>
+                    <td>{props.LastName}</td>
+                    <td>{props.Age}</td>
+                    <td>{ButtonClicked}</td>
+                </tr>
+                )
+                }
+                )
+            }
+            </tbody>
+        )
+    }
+  
 };
